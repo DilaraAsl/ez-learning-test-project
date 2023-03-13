@@ -28,7 +28,7 @@ public class CursoController{
 
     private CursoService cursoService;
     private CursoRepository cursoRepository;
-    private MatriculaRepository matriculaRepository;
+    private MatriculaRepository matriculaRepository; // enrollment repository
     private UserRepository userRepository;
     private ProfesorRepository profesorRepository;
 

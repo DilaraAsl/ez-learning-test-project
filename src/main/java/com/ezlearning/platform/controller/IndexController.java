@@ -21,7 +21,7 @@ public class IndexController {
 
     @GetMapping("/discover")
     public String discover() {
-        return "discover";
+        return "login"; // changed discover to login
     }
 
     @GetMapping("/login")
