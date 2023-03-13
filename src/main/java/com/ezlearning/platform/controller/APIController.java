@@ -28,7 +28,7 @@ public class APIController {
         return this.profesorService.getAll();
     }
 
-    @GetMapping("/cursos")
+    @GetMapping("/courses")
     public List<Course> getAllCurso() {
         return this.courseService.getAll();
     }

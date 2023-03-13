@@ -47,7 +47,7 @@ public class CourseController{
             Profesor current = profesorRepository.findById(id_profesor).get();
             model.addAttribute("curso", new CourseDto());
             model.addAttribute("profesor", current);
-            return "courses-add";
+            return "courses/courses-add";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -62,7 +62,7 @@ public class CourseController{
             Profesor current = profesorRepository.findById(id_profesor).get();
             course.setProfesor(current);
             courseService.create(course);
-            return "redirect:/courses";
+            return "redirect:/courses/courses"; //??
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -77,7 +77,7 @@ public class CourseController{
         try {
             Course courseActual = courseRepository.findById(id_course).get();
             model.addAttribute("course", courseActual);
-            return "courses-edit";
+            return "courses/courses-edit";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -96,7 +96,7 @@ public class CourseController{
             courseService.update(course, id_course);
             attributes.addAttribute("id_course", id_course);
 
-            return "redirect:/coursos/{id_course}";
+            return "redirect:/courses/{id_course}";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
@@ -108,7 +108,7 @@ public class CourseController{
     public String getCursosList(Model model) {
         List<Course> courses = courseService.getAll();
         model.addAttribute("courses", courses);
-        return "courses";
+        return "/courses/courses";
     }
 
     @GetMapping("/delete/{id_course}")
@@ -139,7 +139,7 @@ public class CourseController{
             }
             model.addAttribute("course", course);
             model.addAttribute("matriculado", matriculado);
-            return "courses-detail";
+            return "/courses/courses-detail";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);
