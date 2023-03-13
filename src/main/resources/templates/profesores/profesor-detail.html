@@ -73,11 +73,11 @@
                     <div class="card-action">
                         <!-- Cursos -->
                         <h5 class="teal-text mb-4">Cursos <span sec:authorize="hasRole('ROLE_ADMIN')">
-                            <a th:href="@{/cursos/add/{id_profesor} (id_profesor=${profesor.id_profesor})}" class="btn-floating btn-small waves-effect waves-light lighten-1"><i class="material-icons">add</i></a>
+                            <a th:href="@{/courses/add/{id_profesor} (id_profesor=${profesor.id_profesor})}" class="btn-floating btn-small waves-effect waves-light lighten-1"><i class="material-icons">add</i></a>
                         </span>
                         </h5>
-                        <div class="mb-3" th:each="curso:${cursos}">
-                            <a th:href="|/cursos/${curso.id_curso}|"><strong th:text="${curso.nomCurso}">Cursos</strong></a>
+                        <div class="mb-3" th:each="course:${courses}">
+                            <a th:href="|/courses/${course.id_curso}|"><strong th:text="${course.nomCurso}">Cursos</strong></a>
                         </div>
                     </div>
                 </div>

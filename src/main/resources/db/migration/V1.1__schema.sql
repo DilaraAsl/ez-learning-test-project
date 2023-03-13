@@ -28,7 +28,7 @@ CREATE TABLE profesor (
     imgurl VARCHAR(1024) NOT NULL
 );
 
-CREATE TABLE curso (
+CREATE TABLE course (
   curso_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(128) NOT NULL UNIQUE,
   descripcion VARCHAR(256) NOT NULL,
@@ -46,5 +46,5 @@ CREATE TABLE matricula (
     curso_id BIGINT NOT NULL,
     fecha DATE NOT NULL,
     CONSTRAINT matricula_user_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
-    CONSTRAINT matricula_curso_fk FOREIGN KEY(curso_id) REFERENCES curso(curso_id)
+    CONSTRAINT matricula_curso_fk FOREIGN KEY(curso_id) REFERENCES course(curso_id)
 );

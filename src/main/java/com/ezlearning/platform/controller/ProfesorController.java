@@ -1,9 +1,9 @@
 package com.ezlearning.platform.controller;
 
 import com.ezlearning.platform.dto.ProfesotDto;
-import com.ezlearning.platform.model.Curso;
+import com.ezlearning.platform.model.Course;
 import com.ezlearning.platform.model.Profesor;
-import com.ezlearning.platform.repositories.CursoRepository;
+import com.ezlearning.platform.repositories.CourseRepository;
 import com.ezlearning.platform.repositories.ProfesorRepository;
 import com.ezlearning.platform.services.core.impl.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +24,14 @@ public class ProfesorController {
 
     private ProfesorService profesorService;
     private ProfesorRepository profesorRepository;
-    private CursoRepository cursoRepository;
+    private CourseRepository courseRepository;
 
     @Autowired
     public ProfesorController(ProfesorService profesorService, ProfesorRepository profesorRepository,
-                              CursoRepository cursoRepository) {
+                              CourseRepository courseRepository) {
         this.profesorService = profesorService;
         this.profesorRepository = profesorRepository;
-        this.cursoRepository = cursoRepository;
+        this.courseRepository = courseRepository;
     }
 
     @GetMapping("/add")
@@ -134,8 +134,8 @@ public class ProfesorController {
         try {
             Profesor profesor = profesorRepository.findById(id_profesor).get();
             model.addAttribute("profesor", profesor);
-            List<Curso> cursos = cursoRepository.findAllByProfesor(profesor);
-            model.addAttribute("cursos", cursos);
+            List<Course> courses = courseRepository.findAllByProfesor(profesor);
+            model.addAttribute("cursos", courses);
             return "profesores/profesor-detail";
         } catch (Exception e) {
             e.printStackTrace();

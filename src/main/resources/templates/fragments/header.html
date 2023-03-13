@@ -2,7 +2,7 @@
     <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo white-text">Ez Learning</a>
         <ul class="right hide-on-med-and-down">
-            <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
+            <li><a th:href="@{/courses}" class="white-text">Cursos</a></li>
             <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
             <!--Dropdown-->
             <li sec:authorize="isAnonymous()"><a class="dropdown-trigger" href="#" data-target="logindd">Ingresar
@@ -11,7 +11,7 @@
                     class="material-icons">account_circle</i></a></li>
         </ul>
         <ul id="nav-mobile" class="sidenav teal darken-2">
-            <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
+            <li><a th:href="@{/courses}" class="white-text">Cursos</a></li>
             <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
             <li sec:authorize="isAnonymous()"><a th:href="@{/login}" class="white-text">Iniciar Sesión</a></li>
             <li sec:authorize="isAnonymous()"><a th:href="@{/register}" class="white-text">Registrarse</a></li>

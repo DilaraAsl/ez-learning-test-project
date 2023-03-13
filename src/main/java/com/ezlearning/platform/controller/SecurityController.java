@@ -2,11 +2,10 @@ package com.ezlearning.platform.controller;
 
 import com.ezlearning.platform.auth.User;
 import com.ezlearning.platform.auth.UserRepository;
-import com.ezlearning.platform.model.Matricula;
-import com.ezlearning.platform.repositories.MatriculaRepository;
+import com.ezlearning.platform.model.Enrollment;
+import com.ezlearning.platform.repositories.EnrollmentRepository;
 import com.ezlearning.platform.services.core.impl.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ import java.util.List;
 public class SecurityController {
 
     private final UserRepository userRepository;
-    private final MatriculaRepository matriculaRepository;
+    private final EnrollmentRepository enrollmentRepository;
     private final UserService userService;
 
     @GetMapping("/profile")
@@ -31,10 +30,10 @@ public class SecurityController {
         try {
             String currentUsername = authentication.getName();
             User user = userRepository.findByUsername(currentUsername);
-            List<Matricula> matriculas = matriculaRepository.findAllByUsuario(user);
-            int numCursos = matriculas.size();
+            List<Enrollment> enrollments = enrollmentRepository.findAllByUsuario(user);
+            int numCursos = enrollments.size();
             model.addAttribute("user", user);
-            model.addAttribute("matriculas", matriculas);
+            model.addAttribute("matriculas", enrollments);
             model.addAttribute("numCursos", numCursos);
             return "user/profile";
         } catch (Exception e) {

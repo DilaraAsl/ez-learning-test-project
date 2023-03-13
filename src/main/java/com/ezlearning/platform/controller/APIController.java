@@ -1,10 +1,9 @@
 package com.ezlearning.platform.controller;
 
-import com.ezlearning.platform.model.Curso;
+import com.ezlearning.platform.model.Course;
 import com.ezlearning.platform.model.Profesor;
-import com.ezlearning.platform.services.core.impl.CursoService;
+import com.ezlearning.platform.services.core.impl.CourseService;
 import com.ezlearning.platform.services.core.impl.ProfesorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,15 +14,14 @@ import java.util.List;
 @RequestMapping("/api")
 public class APIController {
 
-    private ProfesorService profesorService;
-    private CursoService cursoService;
+    private  final ProfesorService profesorService;
+    private  final CourseService courseService;
 
-    @Autowired
-    public APIController(ProfesorService profesorService, CursoService cursoService) {
-        super();
+    public APIController(ProfesorService profesorService, CourseService courseService) {
         this.profesorService = profesorService;
-        this.cursoService = cursoService;
+        this.courseService = courseService;
     }
+
 
     @GetMapping("/profesores")
     public List<Profesor> getAllProf() {
@@ -31,7 +29,7 @@ public class APIController {
     }
 
     @GetMapping("/cursos")
-    public List<Curso> getAllCurso() {
-        return this.cursoService.getAll();
+    public List<Course> getAllCurso() {
+        return this.courseService.getAll();
     }
 }

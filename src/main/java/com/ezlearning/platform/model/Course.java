@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "curso")
-public class Curso {
+public class Course {
 
     @Id
     @Column(name = "curso_id")
@@ -43,7 +43,7 @@ public class Curso {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Profesor profesor;
 
-    public Curso(String nomCurso, String descripcionCurso, String detalleCurso, String dificultadCurso, String urlCurso, String imgurl, Profesor profesor) {
+    public Course(String nomCurso, String descripcionCurso, String detalleCurso, String dificultadCurso, String urlCurso, String imgurl, Profesor profesor) {
         this.nomCurso = nomCurso;
         this.descripcionCurso = descripcionCurso;
         this.detalleCurso = detalleCurso;

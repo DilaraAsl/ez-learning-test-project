@@ -2,9 +2,9 @@ package com.ezlearning.platform.controller;
 
 import com.ezlearning.platform.auth.User;
 import com.ezlearning.platform.auth.UserRepository;
-import com.ezlearning.platform.model.Curso;
-import com.ezlearning.platform.repositories.CursoRepository;
-import com.ezlearning.platform.services.core.impl.MatriculaService;
+import com.ezlearning.platform.model.Course;
+import com.ezlearning.platform.repositories.CourseRepository;
+import com.ezlearning.platform.services.core.impl.EnrollmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -17,27 +17,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/matricula")
 @PreAuthorize("hasRole('ROLE_USER')")
-public class MatriculaController {
+public class EnrollmentController {
 
-    private MatriculaService matriculaService;
+    private EnrollmentService enrollmentService;
     private UserRepository userRepository;
-    private CursoRepository cursoRepository;
+    private CourseRepository courseRepository;
 
     @Autowired
-    public MatriculaController(MatriculaService matriculaService, UserRepository userRepository, CursoRepository cursoRepository) {
-        this.matriculaService = matriculaService;
+    public EnrollmentController(EnrollmentService enrollmentService, UserRepository userRepository, CourseRepository courseRepository) {
+        this.enrollmentService = enrollmentService;
         this.userRepository = userRepository;
-        this.cursoRepository = cursoRepository;
+        this.courseRepository = courseRepository;
     }
 
     @GetMapping("/save/{id_curso}")
     public String saveMatricula(@PathVariable Long id_curso, Authentication authentication, Model model) {
         try {
             String username = authentication.getName();
-            matriculaService.createMatricula(id_curso, username);
+            enrollmentService.createMatricula(id_curso, username);
             User user = userRepository.findByUsername(username);
-            Curso curso = cursoRepository.findById(id_curso).get();
-            model.addAttribute("curso", curso);
+            Course course = courseRepository.findById(id_curso).get();
+            model.addAttribute("curso", course);
             model.addAttribute("user", user);
             return "matricula-success";
         } catch (Exception e) {

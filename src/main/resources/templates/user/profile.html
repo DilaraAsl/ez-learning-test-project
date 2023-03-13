@@ -21,13 +21,13 @@
                         </i><span th:text="${user.username}"></span></div>
                         <div class="collapsible-body" th:switch="${numCursos}">
                             <div th:case="'0'">
-                                Sin cursos.
+                                Sin courses.
                             </div>
                             <div th:case="'1'">
-                                Matriculado en 1 curso.
+                                Matriculado en 1 course.
                             </div>
                             <div th:case="*">
-                                Matriculado en <span th:text="${numCursos}"></span> cursos.</div>
+                                Matriculado en <span th:text="${numCursos}"></span> courses.</div>
                             </div>
                     </li>
                     <li>
@@ -83,14 +83,14 @@
                         <h5 class="teal-text mb-4">Cursos Matriculados</h5>
                         <div th:switch="${numCursos}">
                             <div th:case="'0'" class="mb-3">
-                                Todavía no está matriculado en ningún curso.
+                                Todavía no está matriculado en ningún course.
                             </div>
                             <div th:case="*">
-                                <div class="mb-3" th:each="matricula:${matriculas}">
-                                    <a th:href="|/cursos/${matricula.curso.id_curso}|"><strong
-                                            th:text="${matricula.curso.nomCurso}">Cursos
+                                <div class="mb-3" th:each="matricula:${enrollments}">
+                                    <a th:href="|/courses/${matricula.course.id_curso}|"><strong
+                                            th:text="${matricula.course.nomCurso}">Cursos
                                     </strong> Dictado por <strong
-                                            th:text="${matricula.curso.profesor.nomProfesor} + ' ' + ${matricula.curso.profesor.apeProfesor}"></strong> desde <strong th:text="${matricula.fecha_matricula}"></strong></a>
+                                            th:text="${matricula.course.profesor.nomProfesor} + ' ' + ${matricula.course.profesor.apeProfesor}"></strong> desde <strong th:text="${matricula.fecha_matricula}"></strong></a>
                                 </div>
                             </div>
                         </div>

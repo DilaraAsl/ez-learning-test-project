@@ -15,16 +15,16 @@
                 <h1 class="header center white-text">Bienvenido <span th:text="${user.nombre}"></span></h1>
                 <div class="row center">
                     <h5 class="header col s12 light">Te has matriculado satisfactoriamente en <span
-                            th:text="${curso.nomCurso}"></span>.</h5>
+                            th:text="${course.nomCurso}"></span>.</h5>
                 </div>
                 <br>
                 <div class="row center">
-                    <a th:href="|${curso.urlCurso}|" target="_blank" class="waves-effect waves-light btn-large">Acceder</a>
+                    <a th:href="|${course.urlCurso}|" target="_blank" class="waves-effect waves-light btn-large">Acceder</a>
                 </div>
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img th:src="${curso.imgurl}" alt="Unsplash curso img"></div>
+        <div class="parallax"><img th:src="${course.imgurl}" alt="Unsplash course img"></div>
     </div>
 
 </main>

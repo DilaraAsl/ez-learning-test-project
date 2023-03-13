@@ -4,24 +4,22 @@ import com.ezlearning.platform.auth.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "matricula")
-public class Matricula {
+@Table(name = "enrollment")
+public class Enrollment {
     @Id
-    @Column(name = "matricula_id")
+    @Column(name = "enrollment_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_matricula;
 
-    @Column(name = "fecha")
+    @Column(name = "date")
     private LocalDate fecha_matricula;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -30,11 +28,11 @@ public class Matricula {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "curso_id", nullable = false)
-    private Curso curso;
+    private Course course;
 
-    public Matricula(LocalDate fecha_matricula, User usuario, Curso curso) {
+    public Enrollment(LocalDate fecha_matricula, User usuario, Course course) {
         this.fecha_matricula = fecha_matricula;
         this.usuario = usuario;
-        this.curso = curso;
+        this.course = course;
     }
 }
