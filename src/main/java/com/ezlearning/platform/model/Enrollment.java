@@ -12,14 +12,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "enrollment")
+@Table(name = "matricula")
 public class Enrollment {
     @Id
-    @Column(name = "enrollment_id")
+    @Column(name = "matricula_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_matricula;
 
-    @Column(name = "date")
+    @Column(name = "fecha")
     private LocalDate fecha_matricula;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
